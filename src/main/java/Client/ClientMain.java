@@ -22,9 +22,8 @@ public class ClientMain {
             Scanner input = new Scanner(inputStream);
             PrintWriter output = new PrintWriter(outputStream);
             Scanner myScanner = new Scanner(System.in);
-            Request request = new Request(input, output, myScanner);
+            Request request = new Request(input, output);
             Question question = new Question(request, myScanner);
-            request.setQuestion(question);
             question.showingEnteringMenu();
         }
         catch (Exception exception) {

@@ -43,7 +43,7 @@ public class Service implements Runnable {
             if (!input.hasNext()) {
                 return;
             }
-            String command = input.next();
+            String command = input.nextLine();
             JSONObject jsonObject = new JSONObject(command);
             int number = Integer.parseInt(jsonObject.getString("number"));
             executeCommand(number, jsonObject);

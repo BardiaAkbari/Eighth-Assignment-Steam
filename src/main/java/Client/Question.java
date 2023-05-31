@@ -90,6 +90,7 @@ public class Question {
             Client client = new Client(username, password, date);
             String ans = request.addUserToDB(client);
             System.out.println(ans);
+            mainMenu(client);
         }
         else {
             System.out.println("This username is already exist.");

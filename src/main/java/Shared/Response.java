@@ -15,7 +15,8 @@ public class Response {
     Statement statement;
 
 
-    public Response() throws SQLException {
+    public Response() throws SQLException, ClassNotFoundException {
+        Class.forName("com.mysql.cj.jdbc.Driver");
         connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/steam",
                 "root",
                 "Nariman@1383");
@@ -41,8 +42,7 @@ public class Response {
         checkUsernameResult.next();
         int numberCheck = Integer.parseInt(checkUsernameResult.getString("count(*)"));
         boolean answer = numberCheck != 0;
-        return "\"answer\" : " + '"' + answer + "\"}";
-
+        return "{\"answer\" : " + '"' + answer + "\"}";
     }
 
     public String checkPasswordForLoginOperation(String username, String password) throws SQLException, IOException {
@@ -62,9 +62,9 @@ public class Response {
     }
 
     public String addUserToDB(JSONObject jsonObject) throws SQLException {
-        String sqlCommand = "INSERT INTO accounts VALUES (" + jsonObject.getString("id") + ',' +
-                jsonObject.getString("username") + ',' + jsonObject.getString("password") + ',' +
-                jsonObject.getString("date") + ')';
+        String sqlCommand = "INSERT INTO accounts VALUES (\"" + jsonObject.getString("iD") + "\",\"" +
+                jsonObject.getString("username") + "\",\"" + jsonObject.getString("password") + "\",\"" +
+                jsonObject.getString("date") + "\")";
         int addUser = statement.executeUpdate(sqlCommand);
         return "";
     }

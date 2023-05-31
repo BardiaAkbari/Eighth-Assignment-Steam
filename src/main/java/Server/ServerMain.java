@@ -8,7 +8,7 @@ import java.net.Socket;
 import java.sql.SQLException;
 
 public class ServerMain {
-    public static void main(String[] args) throws IOException, SQLException {
+    public static void main(String[] args) throws IOException, SQLException, ClassNotFoundException {
         final int SBAP_PORT = 8888;
         ServerSocket server = new ServerSocket(SBAP_PORT);
         System.out.println("Waiting for clients to connect...");
