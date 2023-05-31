@@ -81,9 +81,9 @@ public class Response {
         ResultSet gameInfo = statement.executeQuery(sqlCommand);
         gameInfo.next();
         String answer = "{\"title\" : \"" + gameInfo.getString(2) +
-                "\", \"developer\" : \"" + gameInfo.getString(3) + "\", \"gnere\" : \"" +
-                gameInfo.getString(4) + "\", \"Price\" : \"" + gameInfo.getString(5) +
-                "\", \"release year\" : \"" + gameInfo.getString(6) + "\", \"controller support\" : " +
+                "\", \"developer\" : \"" + gameInfo.getString(3) + "\", \"genre\" : \"" +
+                gameInfo.getString(4) + "\", \"price\" : \"" + gameInfo.getString(5) +
+                "\", \"release year\" : \"" + gameInfo.getString(6) + "\", \"controller support\" : \"" +
                 gameInfo.getString(7) + "\", \"reviews\" : \"" + gameInfo.getString(8) +
                 "\", \"size\" : \"" + gameInfo.getString(9) + "\"}";
 

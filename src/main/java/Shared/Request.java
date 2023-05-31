@@ -73,7 +73,7 @@ public class Request {
     }
 
     public String downloadGame(String clientID, String gameName) {
-        String jsonCommand = "{\"number\" : \"6\" , \"gameName\" :" + gameName + "\", \"clientID\" : \"" + clientID + "\"}";
+        String jsonCommand = "{\"number\" : \"6\" , \"gameName\" : \"" + gameName + "\", \"clientID\" : \"" + clientID + "\"}";
         output.println(jsonCommand);
         output.flush();
         return input.nextLine();
