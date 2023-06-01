@@ -78,4 +78,11 @@ public class Request {
         output.flush();
         return input.nextLine();
     }
+
+    public String getGameID(String gameName) {
+        String jsonCommand = "{\"number\" : \"7\" , \"gameName\" : \"" + gameName + "\"}";
+        output.println(jsonCommand);
+        output.flush();
+        return input.nextLine();
+    }
 }

@@ -3,6 +3,7 @@ package Client;
 import Shared.Request;
 import org.json.JSONObject;
 
+import java.io.File;
 import java.io.IOException;
 import java.util.Scanner;
 
@@ -39,7 +40,7 @@ public class Question {
     }
 
     public void accountExisting() throws IOException {
-        System.out.println("Do you have an account?!(yes/no): ");
+        System.out.println("Do you have an account?!(Yes/No): ");
         String answer = myScanner.nextLine();
         switch (answer) {
             case "yes":
@@ -147,6 +148,7 @@ public class Question {
         System.out.println("Do you want to download it?!(Yes/No): ");
         String answer = myScanner.nextLine();
         if (answer.equals("Yes") || answer.equals("yes")) {
+            checkForExistenceOnPC(client, gameName);
             downloadGame(client, gameName);
         }
         else {
@@ -165,12 +167,23 @@ public class Question {
         System.out.println("Please enter name of video game that you want to download: ");
         String videoGameName = myScanner.nextLine();
         if (request.checkGameExist(videoGameName)) {
+            checkForExistenceOnPC(client, videoGameName);
             downloadGame(client, videoGameName);
         }
         else {
             System.out.println("There is not any game with this name.");
             System.out.println("Please try again.");
             downloadAsk(client);
+        }
+    }
+
+    public void checkForExistenceOnPC(Client client, String gameName) {
+        String gameID = request.getGameID(gameName);
+        String targetFolder = "D:\\SteamDownloads\\" + client.getiD() + "\\" + gameID + ".txt";
+        File file = new File(targetFolder);
+        if (file.exists()) {
+            System.out.println("You already have this game.");
+            mainMenu(client);
         }
     }
 }

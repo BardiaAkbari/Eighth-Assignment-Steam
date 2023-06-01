@@ -16,10 +16,10 @@ public class Client {
     }
     // Constructor For login
     public Client(String iD, String username, String password, String date) {
+        this.iD = iD;
         this.username = username;
         this.password = password;
         this.date = date;
-        this.iD = iD;
     }
     // Constructor For Signing
     public Client(String username, String password, String date) {

@@ -74,6 +74,9 @@ public class Service implements Runnable {
             case 6:
                 answer = response.downloadGame(jsonObject.getString("gameName"), jsonObject.getString("clientID"));
                 break;
+            case 7:
+                answer = response.getGameID(jsonObject.getString("gameName"));
+                break;
         }
         outPut.println(answer);
         outPut.flush();

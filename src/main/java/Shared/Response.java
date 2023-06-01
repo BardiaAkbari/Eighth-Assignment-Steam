@@ -54,7 +54,7 @@ public class Response {
         if (dbPassword.equals(password)) {
             String id = checkForClientResult.getString("id");
             String birth_date = checkForClientResult.getString("birth_date");
-            client = new Client(username, dbPassword, id, birth_date);
+            client = new Client(id, username, dbPassword, birth_date);
         }
         ObjectMapper objectMapper = new ObjectMapper();
         String jsonData = objectMapper.writeValueAsString(client);
@@ -99,7 +99,7 @@ public class Response {
                 gameID + ".txt";
         String mainPngFile = "D:\\Uni TA Projects\\Term 2\\Java\\Main\\Eighth-Assignment-Steam\\src\\main\\java\\Server\\Resources\\" +
                 gameID + ".png";
-        String targetFolder = "D:\\SteamDownloads:\\" + clientID;
+        String targetFolder = "D:\\SteamDownloads\\" + clientID;
         File existenceFile = new File(targetFolder);
         File tFile = new File(mainTxtFile);
         File pFile = new File(mainPngFile);
@@ -122,6 +122,13 @@ public class Response {
             int insertSql = statement.executeUpdate(insertSqlCommand);
         }
         return "";
+    }
+
+    public String getGameID(String gameName) throws SQLException {
+        String sqlCommand = "SELECT id FROM games WHERE title = '" + gameName + "'";
+        ResultSet checkGameID = statement.executeQuery(sqlCommand);
+        checkGameID.next();
+        return checkGameID.getString(1);
     }
 }
 
