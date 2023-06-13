@@ -17,9 +17,9 @@ public class Response {
 
     public Response() throws SQLException, ClassNotFoundException {
         Class.forName("com.mysql.cj.jdbc.Driver");
-        connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/steam",
-                "root",
-                "Nariman@1383");
+            connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/steam",
+                    "root",
+                    "Nariman@1383");
         statement = connection.createStatement();
     }
 
